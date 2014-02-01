@@ -72,6 +72,11 @@
 					context.fillRect(x, y, eraserSize, eraserSize);
 				}					
 				canvas.addEventListener("mouseup", changeMouseStatus);
+				canvas.addEventListener("mouseleave", function() {
+					mouseDown = false;
+					mouseMove = false;
+					mouseUp = true;
+				});
 			}
 		}	
 		
