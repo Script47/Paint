@@ -16,7 +16,8 @@ Update Log
 			-More Colours
 			-Brush Size
 			-Saving Image
-			-Viewing Image
+			-Viewing Image 
+			-Fixed Bug - When leaving canvas and come back it would still draw. Now it's fixed.
 
 What you can do?
 =====
