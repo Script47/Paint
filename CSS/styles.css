@@ -1,0 +1,23 @@
+body {
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			text-align: center;
+			font: normal 12px Consolas;
+		}
+		canvas {
+			cursor: crosshair;
+		}
+		button:hover {
+			background-color: lightblue;
+		}
+		a, a:active {
+			text-decoration: none;
+			color: blue;
+		}
+		a:hover {
+			color: red;
+		}
