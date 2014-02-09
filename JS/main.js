@@ -27,6 +27,17 @@
 		var brush = 1;
 		var eraser = 0;
 	
+		$(document).ready(function() {
+			$("#loading").fadeOut("slow");
+		});
+	
+		$(document).ready(function() {
+			$("#closed").click(function() {
+				$("#open").toggle("slow");
+			
+			});
+		});
+		
 		window.onload = function load() {
 			setInterval(function() {
 				eraserColour = bgColour;
@@ -36,6 +47,15 @@
 					$("#canvas").css("border", "none");					
 				}
 			}, 1);	
+			
+			if(!getSaveData("canvas")) {
+				
+			} else {
+				var image = new Image();
+				image.src = getSaveData("canvas");
+				
+				context.drawImage(image, 0, 0);
+			}
 		}
 		
 		canvas.addEventListener("mousedown", checkMouseDown);
@@ -78,7 +98,13 @@
 					mouseUp = true;
 				});
 			}
-		}	
+		} 
+		
+		setInterval(function() {
+			console.log("Mouse Down: "+mouseDown);
+			console.log("Mouse Up: "+mouseUp);
+			console.log("Mouse Move: "+mouseMove);			
+		}, 1000);
 		
 		function clearCanvas() {
 			context.fillStyle = bgColour;
@@ -121,3 +147,7 @@
 			var image = getSaveData("canvas");
 			window.open(image, 'new_window', 'height=800, width=1000');
 		}	
+		
+		function deleteSave() {
+			localStorage.removeItem("canvas");
+		}

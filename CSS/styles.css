@@ -1,23 +1,53 @@
 body {
-			-webkit-touch-callout: none;
-			-webkit-user-select: none;
-			-khtml-user-select: none;
-			-moz-user-select: none;
-			-ms-user-select: none;
-			user-select: none;
-			text-align: center;
-			font: normal 12px Consolas;
-		}
-		canvas {
-			cursor: crosshair;
-		}
-		button:hover {
-			background-color: lightblue;
-		}
-		a, a:active {
-			text-decoration: none;
-			color: blue;
-		}
-		a:hover {
-			color: red;
-		}
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	text-align: center;
+	font: normal 12px Consolas;
+}
+canvas {
+	cursor: crosshair;
+}
+button:hover {
+	background-color: lightblue;
+}
+a, a:active {
+	text-decoration: none;
+	color: blue;
+}
+a:hover {
+	color: red;
+}
+#closed, #open {
+	height: auto;
+	width: 100%;
+	text-align:center;
+	background-color:#e5eecc;
+	border:solid 1px #c3c3c3;
+}
+#open {
+	display:none;
+}
+#bottomBar { 
+	position: fixed; 
+	height: auto;
+	width: 100%;
+	text-align: center;
+	background-color:#e5eecc;
+	border:solid 1px #c3c3c3;
+	right: 0;
+	left: 0;
+	bottom: 0;
+}
+#loading { 
+	position: absolute;
+	width: 100%;
+	color: red;
+	text-align: center;
+	background-color: black;
+	right: 0;
+	left: 0;
+}

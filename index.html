@@ -7,7 +7,7 @@
 	<!--
 		Paint
 		Developer: Script47
-		Version: 2.0
+		Version: 1.3
 		Copyright Script47 2014
 	
 		-To-Do: 
@@ -16,7 +16,11 @@
 			-Brush Size - Done
 			-Saving Image - Done
 			-Viewing Image - Done
-
+			
+			Added 09/02/2014: 
+				-Re-Load Saved Image On Load
+				-Delete Saved Image
+				
 	!-->
 	
 	<body>
@@ -25,46 +29,62 @@
 	
 	<noscript><p><font color="red">JS must be enabled!</font></p></noscript>
 	
-	[<a href="#" onmouseup="saveImage();">Save Image</a>] [<a href="#" onmouseup="viewImage();">View Saved Image</a>]
+	[<a href="#" onmouseup="saveImage();">Save Image</a>] - [<a href="#" onmouseup="viewImage();">View Saved Image</a>] - [<a href="#" onmouseup="deleteSave();">Delete Saved Image</a>]
+	
+	<br/>
+	<br/>
+	
+	<div id="loading">
+		<p>Loading, please wait...</p>
+	</div>
+	
+	<div id="closed"><p><b>Tools: </b>Click To Toggle!</p></div>
+	<div id="open">
+		<p><b>Tools:</b></p>
+		<button onmouseup="setBrush();">Brush</button>
+		<button onmouseup="setEraser();">Eraser</button>
+		<button onmouseup="clearCanvas();">Clear Canvas</button>
+		<br/>
+		<p><b>Brush Colour: </b></p>
+		<button id="white" onmouseup="changeBrushColour(this.id)">White</button>		
+		<button id="black" onmouseup="changeBrushColour(this.id)">Black</button>	
+		<button id="blue" onmouseup="changeBrushColour(this.id)">Blue</button>
+		<button id="red" onmouseup="changeBrushColour(this.id)">Red</button>
+		<button id="green" onmouseup="changeBrushColour(this.id)">Green</button>
+		<button id="brown" onmouseup="changeBrushColour(this.id)">Brown</button>	
+		<button id="orange" onmouseup="changeBrushColour(this.id)">Orange</button>		
+		<button id="yellow" onmouseup="changeBrushColour(this.id)">Yellow</button>	
+		<br/>
+		<p><b>Background Colour:</b></p>
+		<button id="white" onclick="changeBGColour(this.id)">White</button>		
+		<button id="black" onclick="changeBGColour(this.id)">Black</button>	
+		<button id="blue" onclick="changeBGColour(this.id)">Blue</button>
+		<button id="red" onclick="changeBGColour(this.id)">Red</button>
+		<button id="green" onclick="changeBGColour(this.id)">Green</button>
+		<button id="brown" onclick="changeBGColour(this.id)">Brown</button>	
+		<button id="orange" onclick="changeBGColour(this.id)">Orange</button>		
+		<button id="yellow" onclick="changeBGColour(this.id)">Yellow</button>	
+		<br/>
+		<p><b>Brush Size:</b></p>
+		<button id="1" onmouseup="changeSize(this.id);">Tiny</button>	
+		<button id="5" onmouseup="changeSize(this.id);">Small</button>
+		<button id="8" onmouseup="changeSize(this.id);">Medium</button>
+		<button id="15" onmouseup="changeSize(this.id);">Large</button>	
+		<button id="25" onmouseup="changeSize(this.id);">Extra Large</button>		
+	</div>
+	
+	<br/>
 	
 	<canvas id="canvas" height="380" width="1200" style="border:1px solid darkblue">
-	<p><font color="red">Canvas not supported!</font></p>
+		<p><font color="red">Canvas not supported!</font></p>
 	</canvas>
 	
 	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>		
-	<script src="JS/main.js" type="text/javascript"></script>
-	
-	<p><b>Tools:</b></p>
-	<button onmouseup="setBrush();">Brush</button>
-	<button onmouseup="setEraser();">Eraser</button>
-	<button onmouseup="clearCanvas();">Clear Canvas</button>
-	<br/>
-	<p><b>Brush Colour: </b></p>
-	<button id="white" onmouseup="changeBrushColour(this.id)">White</button>		
-	<button id="black" onmouseup="changeBrushColour(this.id)">Black</button>	
-	<button id="blue" onmouseup="changeBrushColour(this.id)">Blue</button>
-	<button id="red" onmouseup="changeBrushColour(this.id)">Red</button>
-	<button id="green" onmouseup="changeBrushColour(this.id)">Green</button>
-	<button id="brown" onmouseup="changeBrushColour(this.id)">Brown</button>	
-	<button id="orange" onmouseup="changeBrushColour(this.id)">Orange</button>		
-	<button id="yellow" onmouseup="changeBrushColour(this.id)">Yellow</button>	
-	<br/>
-	<p><b>Background Colour:</b></p>
-	<button id="white" onclick="changeBGColour(this.id)">White</button>		
-	<button id="black" onclick="changeBGColour(this.id)">Black</button>	
-	<button id="blue" onclick="changeBGColour(this.id)">Blue</button>
-	<button id="red" onclick="changeBGColour(this.id)">Red</button>
-	<button id="green" onclick="changeBGColour(this.id)">Green</button>
-	<button id="brown" onclick="changeBGColour(this.id)">Brown</button>	
-	<button id="orange" onclick="changeBGColour(this.id)">Orange</button>		
-	<button id="yellow" onclick="changeBGColour(this.id)">Yellow</button>	
-	<br/>
-	<p><b>Brush Size:</b></p>
-	<button id="1" onmouseup="changeSize(this.id);">Tiny</button>	
-	<button id="5" onmouseup="changeSize(this.id);">Small</button>
-	<button id="8" onmouseup="changeSize(this.id);">Medium</button>
-	<button id="15" onmouseup="changeSize(this.id);">Large</button>	
-	<button id="25" onmouseup="changeSize(this.id);">Extra Large</button>			
+	<script src="JS/main.js" type="text/javascript"></script>		
 
+	<div id="bottomBar">
+		[<a href="https://twitter.com/Script47" target="_blank">@Script47</a>] - [<a href="https://github.com/Script47/Paint" target="_blank">@Github</a>]
+	</div>
+	
 	</body>
 </html>
