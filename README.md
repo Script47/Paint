@@ -18,6 +18,8 @@ Update Log
 			-Saving Image
 			-Viewing Image 
 			-Fixed Bug - When leaving canvas and come back it would still draw. Now it's fixed.
+			-Re-Load Saved Image On Load
+			-Delete Saved Image
 
 What you can do?
 =====
